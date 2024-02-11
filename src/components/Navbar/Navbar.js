@@ -1,8 +1,11 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from 'react-redux';
 
 const Navbar = () => {
+
+  const fav = useSelector(state => state.favourite)
 
 
   return (
@@ -25,7 +28,7 @@ const Navbar = () => {
                 aria-current="page"
                 to="/favourites"
               >
-                Favourites
+                Favourites <span className="text-danger fw-bold">{fav.length < 1 ? `${""}` : fav.length}</span>
               </Link>
             </li>
           </ul>
