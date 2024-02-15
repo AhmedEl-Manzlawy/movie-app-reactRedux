@@ -8,7 +8,7 @@ import Pagination from "../Pagination/Pagination";
 import { PageNumberContext } from "../Context/pageNumberContext";
 
 const Movie = () => {
-  // const [pageNo, setPageNo] = useState(1);
+  
   const [query] = useState("");
   const {lang} =useContext(LanguageContext);
   const {pageNo} =useContext(PageNumberContext)
