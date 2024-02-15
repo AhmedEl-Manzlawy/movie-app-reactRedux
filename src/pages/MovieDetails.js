@@ -1,21 +1,21 @@
 // import axios from "axios"
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { axiosInstance } from "../Network/axiosConfig";
+import { useDispatch, useSelector } from 'react-redux';
+import { getMovieDetails } from "../redux/actions/moviesAction";
+import { LanguageContext } from './../components/Context/languageContext';
 
 const MovieDetails = () => {
-  const [movieDetail, setMovieDetail] = useState({});
+  // const [movieDetail] = useState({});
+  const movieDetail = useSelector(state => state.movieDetail)
+  const dispatch = useDispatch()
   const { id } = useParams();
+  const {lang} = useContext(LanguageContext)
 
   //call Api using axios
   useEffect(() => {
-    axiosInstance
-      .get(
-        `/3/movie/${id}?api_key=b18d0084b5bfde9eff6f582d0672515c`
-      )
-      .then((res) => setMovieDetail(res.data))
-      .catch((err) => console.log(err));
-  });
+    dispatch(getMovieDetails(id,lang))
+  },[dispatch,lang,id]);
 
   return (
     <div className="container card py-3 text-light h-100" style={{backgroundColor:"#3f3f3f"}}>

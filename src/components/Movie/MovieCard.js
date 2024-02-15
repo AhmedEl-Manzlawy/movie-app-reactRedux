@@ -67,7 +67,7 @@ const MovieCard = ({ movie }) => {
         </div>
 
         {/* info */}
-        <div className="overlay-right">
+        <div className="overlay-right ">
           <Link to={`/movie/${movie.id}`}>
             <i
               className="fa-solid fa-circle-info large-icon  "
